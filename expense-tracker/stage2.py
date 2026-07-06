@@ -1,12 +1,15 @@
 expenses = []
-    
-while True:
-    amount = float(input("Enter the expense amount: "))
-    category = input("Enter expense the category: ")
-    description = input("Enter the expense description: ")
-    expenses.append({"amount": f"{amount}", "category": f"{category}", "description": f"{description}"})
-    print("Added the expense: ", expenses)
-    for index, expense in enumerate(expenses):
-        print(f"{index}. Rs.{amount:.2f} | {category} | {description}")
-    break
 
+while True:
+    menu = input("Select an option: \n1. Add Expense\n2.List all expenses\n3.Exit\nSelect a number from above: ")
+    if menu == '1':
+        amount = float(input("Enter the expense amount: "))
+        category = input("Enter expense the category: ")
+        description = input("Enter the expense description: ")
+        expenses.append({"amount": f"{amount}", "category": f"{category}", "description": f"{description}"})
+        print("Added the expense: ", expenses)
+    elif menu == '2':
+        for index, expense in enumerate(expenses):
+            print(f"{index+1}. Rs.{amount:.2f} | {category} | {description}")
+    else:
+        break
