@@ -1,0 +1,5 @@
+amount = float(input("Enter the expense amount: "))
+category = input("Enter expense the category: ")
+description = input("Enter the expense description: ")
+print(f"RECORDED: Rs.{amount:.2f}| {category} | {description}")
+print(f"Tax component: Rs.{amount * 0.18:.2f}")
