@@ -7,14 +7,13 @@ def list_expenses(expenses: list) -> None:
     for index, expense in enumerate(expenses):
         print(f"{index+1}. Rs.{expense['amount']:.2f} | {expense['category']} | {expense['description']}")
 
-def category_totals(expenses: list) -> None:
+def category_totals(expenses: list) -> dict:
     expense_summary = {}
     for expense in expenses:
         if expense['category'] not in expense_summary.keys():
             expense_summary[expense['category']] = expense['amount']
         else:
-            if expense['category'] in expense_summary.keys():
-                expense_summary[expense['category']] += expense['amount']
+            expense_summary[expense['category']] = expense_summary.get(expense['category'], 0) + expense['amount']
     return expense_summary
 
     
@@ -32,7 +31,10 @@ def main() -> None:
         elif user_choice == '3':
             break
         elif user_choice == '4':
-            print(category_totals(expenses_list))
+            summary = category_totals(expenses_list)
+            for k,v in summary.items():
+                print(f"{k}: Rs.{v:.2f}")
+            print(f"Total: {sum(summary.values()):.2f}")
         else:
             continue
 
